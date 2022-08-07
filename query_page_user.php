@@ -4,6 +4,7 @@ include('partials/config.php');
 $page_title = "Maternal Care";
 include('partials/link.php');
 include('partials/header.php');
+date_default_timezone_set("Asia/Dhaka");
 if(!isset($_SESSION['authenticated'])){
 
     $_SESSION['status'] = "Please login to access this page";
@@ -52,7 +53,10 @@ while ($row = mysqli_fetch_assoc($result)) {
     $post_id = $row['post_id'];
     $post_date= $row['date'];
 
-    $post_days = floor((strtotime("now")-strtotime($post_date)) / 86400)+1;
+    $post_days = floor((strtotime("now")-strtotime("$post_date")) / 86400);
+    $post_hours= floor((strtotime("now")-strtotime("$post_date")) / 3600);
+    $post_minutes= floor((strtotime("now")-strtotime("$post_date")) / 60);
+    $post_seconds= floor((strtotime("now")-strtotime("$post_date")));
 
 ?>
 
@@ -67,7 +71,21 @@ while ($row = mysqli_fetch_assoc($result)) {
                     <a class="instagram-card-user-name" href="#"><?php echo $user_name ?></a>
                     </div>
                 <div>
-                    <a style="font-size: 10px;margin-left:10px;color:#999;"><?php echo "$post_days days ago"?></a>
+                <a style="font-size: 10px;margin-left:10px;color:#999;"><?php 
+                    if($post_days>0){
+                        echo "$post_days days ago";
+                    }
+                    elseif($post_hours>0){
+                        echo "$post_hours hours ago";
+                    }
+                    elseif($post_minutes>0){
+                        echo "$post_minutes minutes ago";
+                    }
+                    else{
+                        echo "$post_seconds seconds ago";
+                    }
+                    
+                    ?></a>
                 </div>
                 </div>
             </div>

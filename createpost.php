@@ -4,6 +4,7 @@ include('partials/config.php');
 $page_title = "Maternal Care";
 include('partials/link.php');
 include('partials/header.php');
+date_default_timezone_set("Asia/Dhaka");
 if(!isset($_SESSION['authenticated'])){
 
   $_SESSION['status'] = "Please login to access this page";
