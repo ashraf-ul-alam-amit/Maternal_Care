@@ -23,7 +23,8 @@ if (isset($_POST['login_btn'])) {
                         'email' => $row['email'],
                         'token' => $row['verify_token'],
                         'duedate' => $row['due_date'],
-                        'user_id' => $row['id']
+                        'user_id' => $row['id'],
+                        'isadmin' => $row['isAdmin']
 
                     ];
                     if ($row['isAdmin'] == '1') {

@@ -34,7 +34,19 @@
           <li class="nav-item">
             <a class="nav-link" href="createpost.php">Post</a>
           </li>
+          <?php 
+          if (isset($_SESSION['authenticated'])) :
+          if ($_SESSION['auth_user']['isadmin']==1) : 
+          ?>
+            <li class="nav-item">
+            <a class="nav-link" href="adminhomepage.php">Switch</a>
+          </li>
+        <?php 
+        endif;
+        endif; 
+        ?>
         </ul>
+        
         <?php if (!isset($_SESSION['authenticated'])) : ?>
           <div class=" ml-auto justify-content-end">
             <button class="btn " id="login" class="login"><a href="login.php" class="login">Login</a></button>

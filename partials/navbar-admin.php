@@ -18,6 +18,7 @@
           <li class="nav-item">
             <a class="nav-link" href="parenting.php">Parenting</a>
           </li>
+          
 
 
           <li class="nav-item dropdown">
@@ -31,12 +32,15 @@
           </li>
 
 
-
+          <li class="nav-item">
+            <a class="nav-link" href="query_page_admin.php">Query</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="createpost_admin.php">Post</a>
           </li>
+          
           <li class="nav-item">
-            <a class="nav-link" href="query_page_admin.php">Query</a>
+            <a class="nav-link" href="home.php">Switch</a>
           </li>
           
         </ul>

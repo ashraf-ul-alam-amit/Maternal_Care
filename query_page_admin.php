@@ -30,7 +30,7 @@ if(!isset($_SESSION['authenticated'])){
 <?php
 $my_user_id = $_SESSION['auth_user']['user_id'];
 // $query = "SELECT * FROM post WHERE user_id = $my_user_id;";
-$query = "SELECT * FROM post;";
+$query = "SELECT * FROM post ORDER BY `date` DESC;";
 $result = mysqli_query($con, $query);
 $rows = mysqli_num_rows($result);
 
