@@ -5,7 +5,7 @@ $page_title = "Maternal Care";
 include('partials/link.php');
 include('partials/header.php');
 date_default_timezone_set("Asia/Dhaka");
-if(!isset($_SESSION['authenticated'])){
+if (!isset($_SESSION['authenticated'])) {
 
     $_SESSION['status'] = "Please login to access this page";
     echo "<script> window.location.href='login.php'; </script>";
@@ -42,13 +42,13 @@ while ($row = mysqli_fetch_assoc($result)) {
     $post_title = $row['post_title'];
     $post_content = $row['post_content'];
     $post_id = $row['post_id'];
-    $post_date= $row['date'];
+    $post_date = $row['date'];
 
-    $post_days = floor((strtotime("now")-strtotime("$post_date")) / 86400);
-    $post_hours= floor((strtotime("now")-strtotime("$post_date")) / 3600);
-    $post_minutes= floor((strtotime("now")-strtotime("$post_date")) / 60);
-    $post_seconds= floor((strtotime("now")-strtotime("$post_date")));
-    
+    $post_days = floor((strtotime("now") - strtotime("$post_date")) / 86400);
+    $post_hours = floor((strtotime("now") - strtotime("$post_date")) / 3600);
+    $post_minutes = floor((strtotime("now") - strtotime("$post_date")) / 60);
+    $post_seconds = floor((strtotime("now") - strtotime("$post_date")));
+
 
 ?>
 
@@ -56,32 +56,29 @@ while ($row = mysqli_fetch_assoc($result)) {
         <div class="instagram-card-header">
             <div class="d-flex">
                 <div>
-                <img src="images/logo.png" class="instagram-card-user-image" />
+                    <img src="images/logo.png" class="instagram-card-user-image" />
                 </div>
                 <div>
                     <div>
-                    <a class="instagram-card-user-name" href="#"><?php echo $user_name ?></a>
+                        <a class="instagram-card-user-name" href="#"><?php echo $user_name ?></a>
                     </div>
-                <div>
-                    <a style="font-size: 10px;margin-left:10px;color:#999;"><?php 
-                    if($post_days>0){
-                        echo "$post_days days ago";
-                    }
-                    elseif($post_hours>0){
-                        echo "$post_hours hours ago";
-                    }
-                    elseif($post_minutes>0){
-                        echo "$post_minutes minutes ago";
-                    }
-                    else{
-                        echo "$post_seconds seconds ago";
-                    }
-                    
-                    ?></a>
-                </div>
+                    <div>
+                        <a style="font-size: 10px;margin-left:10px;color:#999;"><?php
+                                                                                if ($post_days > 0) {
+                                                                                    echo "$post_days days ago";
+                                                                                } elseif ($post_hours > 0) {
+                                                                                    echo "$post_hours hours ago";
+                                                                                } elseif ($post_minutes > 0) {
+                                                                                    echo "$post_minutes minutes ago";
+                                                                                } else {
+                                                                                    echo "$post_seconds seconds ago";
+                                                                                }
+
+                                                                                ?></a>
+                    </div>
                 </div>
             </div>
-            
+
         </div>
 
         <div class="instagram-card-content">
@@ -131,7 +128,9 @@ while ($row = mysqli_fetch_assoc($result)) {
             <form name="add-comment-form" action="query_page_admin.php" method="post" style="display: flex;">
 
                 <input name="add_comment" class="comments-input" type="text" placeholder="Add Comment" style=" margin-right:10px;width: 400px;" />
-                <button name="post_comment" style="margin:0px;border:none;" value="<?php echo $post_id; ?>"><p style="color:#5ead62;">Post</p></button>
+                <button name="post_comment" style="margin:0px;border:none;" value="<?php echo $post_id; ?>">
+                    <p style="color:#5ead62;">Post</p>
+                </button>
 
             </form>
         </div>
@@ -143,7 +142,7 @@ if (isset($_POST['post_comment'])) {
     $post_comment = $_POST['add_comment'];
     $main_user_id = $_SESSION['auth_user']['user_id'];
     $post_id = $_POST['post_comment'];
-    $user_name_comment=$_SESSION['auth_user']['username'];
+    $user_name_comment = $_SESSION['auth_user']['username'];
 
 
     if (!empty($post_comment)) {
@@ -164,5 +163,5 @@ if (isset($_POST['post_comment'])) {
 <br>
 <br>
 <?php
-include("partials/footer.php"); 
+include("partials/footer.php");
 ?>

@@ -118,5 +118,14 @@ if (isset($_POST['upload'])) {
 </div>
 
 <br>
-
+<script>
+function myFunction() {
+    var x = document.getElementById("popup-alert");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+</script>
 <?php include("partials/footer.php"); ?>
